@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Crypto Donations</title>
+
+<style>
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  background: #08090d;
+
+  color: white;
+
+  font-family: Arial, sans-serif;
+
+  padding: 45px 18px;
+
+}
+
+header {
+
+  text-align: center;
+
+  margin-bottom: 45px;
+
+}
+
+header h1 {
+
+  font-size: 32px;
+
+  letter-spacing: 5px;
+
+  color: #fff;
+
+}
+
+header p {
+
+  color: #777;
+
+  margin-top: 12px;
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+}
+
+.container {
+
+  max-width: 650px;
+
+  margin: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 25px;
+
+}
+
+.card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  padding: 28px;
+
+  border: 1px solid var(--accent);
+
+  background:
+
+    radial-gradient(circle at 100% 0%,
+
+    var(--glow), transparent 55%),
+
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+
+  transition: .3s;
+
+}
+
+.card:hover {
+
+  transform: translateY(-5px);
+
+  box-shadow: 0 12px 35px var(--shadow);
+
+}
+
+.coin {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-bottom: 26px;
+
+}
+
+.logo {
+
+  width: 58px;
+
+  height: 58px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 30px;
+
+  font-weight: bold;
+
+  color: white;
+
+  background: var(--logo);
+
+  box-shadow: 0 0 22px var(--shadow);
+
+}
+
+.coin h2 {
+
+  font-size: 23px;
+
+  letter-spacing: 2px;
+
+}
+
+.coin span {
+
+  display: block;
+
+  color: #aaa;
+
+  font-size: 12px;
+
+  margin-top: 5px;
+
+}
+
+.network {
+
+  color: var(--accent);
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 12px;
+
+  font-weight: bold;
+
+}
+
+.wallet {
+
+  background: #08090dcc;
+
+  border: 1px solid var(--border);
+
+  border-radius: 11px;
+
+  padding: 15px;
+
+  color: #e2e2e2;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+
+  margin-bottom: 16px;
+
+}
+
+.copy {
+
+  width: 100%;
+
+  border: 1px solid var(--accent);
+
+  background: var(--button);
+
+  color: white;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+}
+
+.copy:hover {
+
+  filter: brightness(1.2);
+
+}
+
+.copy:active {
+
+  transform: scale(.98);
+
+}
+
+/* USDT */
+
+.usdt {
+
+  --accent: #26a17b;
+
+  --bg1: #102b28;
+
+  --bg2: #080e12;
+
+  --glow: #26a17b35;
+
+  --logo: linear-gradient(135deg,#26a17b,#087e68);
+
+  --button: linear-gradient(135deg,#26a17b,#087e68);
+
+  --border: #26a17b55;
+
+  --shadow: #26a17b35;
+
+}
+
+/* ETH */
+
+.eth {
+
+  --accent: #8794ff;
+
+  --bg1: #201d42;
+
+  --bg2: #090b18;
+
+  --glow: #6875ff40;
+
+  --logo: linear-gradient(135deg,#8998ff,#4937a8);
+
+  --button: linear-gradient(135deg,#6576e8,#4937a8);
+
+  --border: #8794ff55;
+
+  --shadow: #6576e840;
+
+}
+
+/* BTC */
+
+.btc {
+
+  --accent: #f7931a;
+
+  --bg1: #352313;
+
+  --bg2: #110d09;
+
+  --glow: #f7931a40;
+
+  --logo: linear-gradient(135deg,#ffb347,#e47700);
+
+  --button: linear-gradient(135deg,#f7931a,#d96b00);
+
+  --border: #f7931a55;
+
+  --shadow: #f7931a40;
+
+}
+
+/* SOL */
+
+.sol {
+
+  --accent: #bd75ef;
+
+  --bg1: #271638;
+
+  --bg2: #091a20;
+
+  --glow: #9945ff45;
+
+  --logo: linear-gradient(135deg,#9945ff,#14f195);
+
+  --button: linear-gradient(110deg,#9945ff,#14b8a6);
+
+  --border: #a45ce966;
+
+  --shadow: #9945ff40;
+
+}
+
+/* TRX */
+
+.trx {
+
+  --accent: #ff4545;
+
+  --bg1: #351416;
+
+  --bg2: #10090b;
+
+  --glow: #ff303040;
+
+  --logo: linear-gradient(135deg,#ff5555,#b50020);
+
+  --button: linear-gradient(135deg,#ef4444,#a90020);
+
+  --border: #ff454555;
+
+  --shadow: #ff303040;
+
+}
+
+@media(max-width:480px) {
+
+  header h1 { font-size: 24px; }
+
+  .card { padding: 22px; }
+
+  .wallet { font-size: 12px; }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>CRYPTO DONATIONS</h1>
+
+  <p>SUPPORTED NETWORKS</p>
+
+</header>
+
+<main class="container">
+
+  <section class="card usdt">
+
+    <div class="coin">
+
+      <div class="logo">₮</div>
+
+      <div>
+
+        <h2>USDT</h2>
+
+        <span>Tether</span>
+
+      </div>
+
+    </div>
+
+    <div class="network">TRC-20 NETWORK</div>
+
+    <div class="wallet">TK4npth2hFPwKNwmG2mydu1iGRQ95uz4FX</div>
+
+    <button class="copy" onclick="copyWallet(this)">COPY ADDRESS</button>
+
+  </section>
+
+  <section class="card eth">
+
+    <div class="coin">
+
+      <div class="logo">Ξ</div>
+
+      <div>
+
+        <h2>ETH</h2>
+
+        <span>Ethereum</span>
+
+      </div>
+
+    </div>
+
+    <div class="network">ETHEREUM NETWORK</div>
+
+    <div class="wallet">0xf14c36f78b18aAe387F1a037875e36BBCF694901</div>
+
+    <button class="copy" onclick="copyWallet(this)">COPY ADDRESS</button>
+
+  </section>
+
+  <section class="card btc">
+
+    <div class="coin">
+
+      <div class="logo">₿</div>
+
+      <div>
+
+        <h2>BTC</h2>
+
+        <span>Bitcoin</span>
+
+      </div>
+
+    </div>
+
+    <div class="network">BITCOIN NETWORK</div>
+
+    <div class="wallet">bc1q70mtcp57thv7fqdx7cxhlus7w4ufcgr990qnes</div>
+
+    <button class="copy" onclick="copyWallet(this)">COPY ADDRESS</button>
+
+  </section>
+
+  <section class="card sol">
+
+    <div class="coin">
+
+      <div class="logo">◎</div>
+
+      <div>
+
+        <h2>SOL</h2>
+
+        <span>Solana</span>
+
+      </div>
+
+    </div>
+
+    <div class="network">SOLANA NETWORK</div>
+
+    <div class="wallet">5BYYRq5qHU5KznKJ7CDm7YqfvcsV9UDJAd1YsZ8cRu9N</div>
+
+    <button class="copy" onclick="copyWallet(this)">COPY ADDRESS</button>
+
+  </section>
+
+  <section class="card trx">
+
+    <div class="coin">
+
+      <div class="logo">T</div>
+
+      <div>
+
+        <h2>TRX</h2>
+
+        <span>TRON</span>
+
+      </div>
+
+    </div>
+
+    <div class="network">TRON NETWORK</div>
+
+    <div class="wallet">TK4npth2hFPwKNwmG2mydu1iGRQ95uz4FX</div>
+
+    <button class="copy" onclick="copyWallet(this)">COPY ADDRESS</button>
+
+  </section>
+
+</main>
+
+<script>
+
+async function copyWallet(button) {
+
+  const wallet = button.previousElementSibling.innerText;
+
+  try {
+
+    await navigator.clipboard.writeText(wallet);
+
+    button.innerText = "✓ COPIED";
+
+  } catch (error) {
+
+    const field = document.createElement("textarea");
+
+    field.value = wallet;
+
+    document.body.appendChild(field);
+
+    field.select();
+
+    document.execCommand("copy");
+
+    field.remove();
+
+    button.innerText = "✓ COPIED";
+
+  }
+
+  setTimeout(() => {
+
+    button.innerText = "COPY ADDRESS";
+
+  }, 1800);
+
+}
+
+</script>
+
+</body>
+
+</html>
